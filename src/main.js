@@ -1,5 +1,4 @@
 import cookieParser from "cookie-parser";
-import cors from "cors";
 import { apiLimiter } from "./middlewares/rateLimit.js";
 import authRouter from "./modules/auth/auth.route.js";
 import userRouter from "./modules/user/user.routes.js";
@@ -11,7 +10,6 @@ import contactRouter from "./modules/contact/contact.route.js";
 import notificationRouter from "./modules/notification/notification.routes.js";
 
 function bootstrap(app) {
-  app.use(cors());
   app.use(apiLimiter);
   app.use(cookieParser());
 
