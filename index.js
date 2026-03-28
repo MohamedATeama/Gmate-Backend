@@ -4,8 +4,11 @@ import dbConnection from "./src/DB/dbConnection.js";
 import { config } from "./src/config/env.js";
 import bootstrap from "./src/main.js";
 import { initSocket } from "./src/socket/socket.js";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors());
 
 dbConnection();
 
