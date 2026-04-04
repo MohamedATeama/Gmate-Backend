@@ -7,6 +7,8 @@ import { initSocket } from "./src/socket/socket.js";
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 dbConnection();
 
 app.use(express.json());
