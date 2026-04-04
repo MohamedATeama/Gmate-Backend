@@ -4,7 +4,7 @@ import { config } from "../config/env.js";
 const receiveEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: config.emailHost,
-    port: 465,
+    port: 587,
     secure: true,
     family: 4,
     auth: {
