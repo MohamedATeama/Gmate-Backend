@@ -1,27 +1,30 @@
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 import { config } from "../config/env.js";
 
+sgMail.setApiKey(config.sendgridApiKey);
+
 const sendMail = async (options) => {
-  const transporter = nodemailer.createTransport({
-    host: config.emailHost,
-    port: 465,
-    secure: true,
-    family: 4,
-    auth: {
-      user: config.emailUsername,
-      pass: config.emailPassword,
-    },
-  });
-  const image = `<img src="./public/logo.png" alt="GMATE Logo" width="350px" height="350px" style="display: block;margin: auto; border-radius: 50%;">`;
-  const emailOptions = {
-    from: config.emailFrom,
+  const msg = {
     to: options.email,
+    from: config.emailFrom, // MUST be verified in SendGrid
     subject: options.subject,
     text: options.message,
-    html: `<div style="background-color:#F6F5F5;padding:2%;margin:2%"><h1>${options.subject}</h1><p>${options.message}</p></div>`,
+    html: `
+  <div style="background-color:#F6F5F5;padding:2%;margin:2%;text-align:center">
+    <img src="https://yourdomain.com/logo.png" width="120" style="border-radius:50%" />
+    <h1>${options.subject}</h1>
+    <p>${options.message}</p>
+  </div>
+`,
   };
 
-  await transporter.sendMail(emailOptions);
+  try {
+    await sgMail.send(msg);
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error("SendGrid error:", error.response?.body || error);
+    throw error;
+  }
 };
 
 export default sendMail;
