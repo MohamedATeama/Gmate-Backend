@@ -5,7 +5,7 @@ const receiveEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: config.emailHost,
     port: 587,
-    secure: true,
+    secure: false,
     family: 4,
     auth: {
       user: config.emailUsername,
