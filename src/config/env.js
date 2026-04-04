@@ -16,6 +16,7 @@ export const config = {
   emailPassword: process.env.EMAIL_PASSWORD,
   emailFrom: process.env.EMAIL_FROM,
   appName: process.env.APP_NAME,
+  sendgridApiKeya: process.env.SENDGRID_API_KEY,
   cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
   cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
