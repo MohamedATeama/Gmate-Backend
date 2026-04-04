@@ -8,7 +8,7 @@ const receiveEmail = async (options) => {
     to: config.emailUsername, // your inbox
     from: config.emailFrom,   // MUST be verified in SendGrid
     replyTo: options.email,   // 👈 key replacement for "from"
-    subject: `[Contact Form] ${options.subject}`
+    subject: `[Contact Form] ${options.subject}`,
     text: options.message,
     html: `
       <div style="background-color:#F6F5F5;padding:2%;margin:2%">
