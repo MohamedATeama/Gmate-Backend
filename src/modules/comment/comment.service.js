@@ -74,7 +74,7 @@ export const updateCommentService = async (commentId, userId, content) => {
     const comment = await Comment.findOneAndUpdate(
         { _id: commentId, createdBy: userId }, 
         { content }, 
-        { new: true }
+        { returnDocument: "after" }
     );
 
     if (!comment) {
