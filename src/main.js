@@ -11,7 +11,6 @@ import notificationRouter from "./modules/notification/notification.routes.js";
 import cors from "cors";
 
 function bootstrap(app) {
-  app.set('trust proxy', 1);
   app.use(cors());
   app.use(apiLimiter);
   app.use(cookieParser());
