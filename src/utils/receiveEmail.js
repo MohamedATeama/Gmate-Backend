@@ -6,6 +6,7 @@ const receiveEmail = async (options) => {
     host: config.emailHost,
     port: 465,
     secure: true,
+    family: 4,
     auth: {
       user: config.emailUsername,
       pass: config.emailPassword,
