@@ -21,9 +21,8 @@ export function getIO() {
 export function initSocket(httpServer) {
   io = new Server(httpServer, {
     cors: {
-      origin: true,
+      origin: "*",
       credentials: true,
-      methods: ["GET", "POST"],
     },
   });
 
